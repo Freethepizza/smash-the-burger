@@ -9,8 +9,8 @@ const loader = new GLTFLoader();
 
 export async function loadAssets(){
     const [kitchenData, burgerData] = await Promise.all([
-        loader.loadAsync('./assets/kitchen.glb'),
-        loader.loadAsync('./assets/burger.glb'),
+        loader.loadAsync('../assets/kitchen.glb'),
+        loader.loadAsync('../assets/burger.glb'),
         //loader.loadAsync('./assets/nerd.glb'),
         //loader.loadAsync('./assets/skater.glb'),
         //loader.loadAsync('./assets/rapper.glb'),
