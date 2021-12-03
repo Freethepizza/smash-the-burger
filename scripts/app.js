@@ -3,7 +3,6 @@ import { GLTFLoader } from "./dependencies/GLTFLoader.js";
 import {OrbitControls} from "./dependencies/OrbitControls.js";
 import TWEEN, { Tween } from "./dependencies/tween.esm.js";
 import {loadAssets} from "./load.js";
-import gsap from "./dependencies/gsap/index.js";
 import { Animation } from "./animations.js";
 
 (async () => {
