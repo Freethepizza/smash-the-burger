@@ -9,10 +9,10 @@ import { Animation } from "./animations.js";
     const scene = new THREE.Scene();
     //TESTS GO HERE START
     var score = 0;
-    const geometry = new THREE.BoxGeometry( .8, .5, .5 );
+    const geometry = new THREE.BoxGeometry( .7, .5, .5 );
     const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
     const mesh = new THREE.Mesh( geometry, material );
-    mesh.position.set(.025,1,2.35)
+    mesh.position.set(0,1,2.35)
     mesh.visible = false;
     scene.add(mesh)
 
@@ -22,19 +22,6 @@ import { Animation } from "./animations.js";
 
 
     //Loading
-
-
-    /**
-     You can call await only inside an async function.
-    Replace
-    let user = await getUser('Bob', 'Ross');
-    with
-    let user;
-    ( async () => user = await getUser('Bob', 'Ross') )();
-    I'm sure there's a better way of doing this.
-
-
-    */
 
     const {kitchen, burger} = await loadAssets();
     scene.add(kitchen,burger);

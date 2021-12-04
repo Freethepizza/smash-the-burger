@@ -8,6 +8,15 @@ const burgerAnimation = (model) => {
     timeline.to(model.position,{x:-1.4,duration:.8,ease:'linear'})
     timeline.to(model.position,{z:-0.6,duration:.8,ease:'linear'})
     timeline.to(model.position,{y:0,duration:.8,ease:'linear'})
+    timeline.add(()=>unsetSmash(model))
+}
+const smashAnimation = (model) =>{
+    let timeline = gsap.timeline({ease: "linear"});
+    timeline.to(model.scale,{y:.1,duration:.1,ease:'linear'})
+}
+
+const unsetSmash = (model) =>{
+    model.scale.y = .3;
 }
 
 export class Animation{
@@ -25,6 +34,7 @@ export class Animation{
     }
     setSmash(){
         smash = true;
+        smashAnimation(this.model)
         console.log('smashed ',smash );  
     }
     unsetSmash(){
