@@ -37,7 +37,7 @@ import { Animation } from "./animations.js";
     scene.add(directionalLight);
 
     //Camera
-    const width = 8;
+    const width = 4;
     const height = width * (812/375);
     const camera = new THREE.OrthographicCamera(width / -2,width / 2,height / 2,height / -2, 1, 100);
     camera.position.set(.2,2,4);
