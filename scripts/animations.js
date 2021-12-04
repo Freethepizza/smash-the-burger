@@ -19,6 +19,10 @@ const unsetSmash = (model) =>{
     model.scale.y = .3;
 }
 
+const modelSwitcher = () =>{
+
+}
+
 export class Animation{
     constructor(model){
         this.model = model;
@@ -35,7 +39,6 @@ export class Animation{
     setSmash(){
         smash = true;
         smashAnimation(this.model)
-        console.log('smashed ',smash );  
     }
     unsetSmash(){
         smash = false;
@@ -46,6 +49,9 @@ export class Animation{
     }
     smashAnim(){
 
+    }
+    stop(){
+        
     }
     getZ(){
         console.log(this.model.position.z)

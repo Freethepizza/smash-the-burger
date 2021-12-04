@@ -94,7 +94,6 @@ import { Animation } from "./animations.js";
         burgerHitbox.setFromObject(burger);
         kitchenHitbox.setFromObject(mesh);
         if(burgerHitbox.intersectsBox(passedIronHitbox) && isExecuted==false && animate.smashStatus()==false){
-            console.log("-1 punto");
             score -=1;
             isExecuted=true;
         }else if(burgerHitbox.intersectsBox(startHitbox) && isExecuted == true){
@@ -109,7 +108,6 @@ import { Animation } from "./animations.js";
 
     renderer.domElement.addEventListener("click", () =>{
         if(kitchenHitbox.intersectsBox(burgerHitbox)){
-            console.log("hit");
             score+=1;
             animate.setSmash();
         }else{
