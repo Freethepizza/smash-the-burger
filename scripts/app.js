@@ -3,53 +3,22 @@ import { GLTFLoader } from "./dependencies/GLTFLoader.js";
 import {OrbitControls} from "./dependencies/OrbitControls.js";
 import TWEEN, { Tween } from "./dependencies/tween.esm.js";
 import {loadAssets} from "./load.js";
-import { Animation } from "./animations.js";
+import { Animation, modelSwitcher } from "./animations.js";
+import {mesh,mesh2,mesh3} from "./hitboxes.js";
 
 (async () => {
     const scene = new THREE.Scene();
     //TESTS GO HERE START
     var score = 0;
-
-    //IRON HITBOX
-    const geometry = new THREE.BoxGeometry( .7, .5, .5 );
-    const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-    const mesh = new THREE.Mesh( geometry, material );
-    mesh.position.set(0,1,2.35);
-    mesh.visible = false;
-    scene.add(mesh)
-    //IRON HITBOX
-    
-    //PASSED IRON HITBOX
-    const geometry2 = new THREE.BoxGeometry(.7,.5,.5);
-    const material2 = new THREE.MeshBasicMaterial({color:0xffff0});
-    const mesh2 = new THREE.Mesh(geometry, material);
-    mesh2.position.set(-1.2,1,-0.6);
-    mesh2.visible=false;
-    scene.add(mesh2);
-    //PASSED IRON HITBOX
-    
-    //START HITBOX
-    const geometry3 = new THREE.BoxGeometry(.7,.5,.5);
-    const material3 = new THREE.MeshBasicMaterial({color:0xffff0});
-    const mesh3 = new THREE.Mesh(geometry, material);
-    mesh3.position.set(1.2,1,-0.6);
-    mesh3.visible = false;
-    scene.add(mesh3);
-    //START HITBOX
-
+    scene.add(mesh,mesh2,mesh3);
     //TESTS GO HERE END
-    
     const animate = new Animation();
-
-
     //Loading
 
-    const {kitchen, burger} = await loadAssets();
-    scene.add(kitchen,burger);
+    const {kitchen, burger,rapper,skater,muppie,gamer} = await loadAssets();
+    scene.add(kitchen,burger,rapper,skater,muppie,gamer);
     animate.model = burger;
-    animate.output();
-    console.log(animate.model)
-    animate.startAnimation()
+    //animate.startAnimation()
     //Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
@@ -63,8 +32,6 @@ import { Animation } from "./animations.js";
     const camera = new THREE.OrthographicCamera(width / -2,width / 2,height / 2,height / -2, 1, 100);
     camera.position.set(.2,2,4);
     camera.lookAt(0,0,0);
-
-
     //Main game
     function gameOn(){
         /* 
@@ -76,10 +43,12 @@ import { Animation } from "./animations.js";
     }
 
     //Renderer
+    animate.startAnimation()
+    var currentModel = burger;
     const renderer = new THREE.WebGLRenderer({antialias: true,alpha: true});
     renderer.setSize(375, 812);
     var controls = new OrbitControls( camera, renderer.domElement );
-    var burgerHitbox = new THREE.Box3().setFromObject(burger);
+    var burgerHitbox = new THREE.Box3().setFromObject(currentModel);
     var kitchenHitbox = new THREE.Box3().setFromObject(mesh);
     var passedIronHitbox = new THREE.Box3().setFromObject(mesh2);
     var startHitbox = new THREE.Box3().setFromObject(mesh3);
@@ -91,13 +60,19 @@ import { Animation } from "./animations.js";
         requestAnimationFrame(tick);
         render();
         document.getElementById("points").innerText = score;  
-        burgerHitbox.setFromObject(burger);
+        burgerHitbox.setFromObject(currentModel);
         kitchenHitbox.setFromObject(mesh);
         if(burgerHitbox.intersectsBox(passedIronHitbox) && isExecuted==false && animate.smashStatus()==false){
             score -=1;
             isExecuted=true;
         }else if(burgerHitbox.intersectsBox(startHitbox) && isExecuted == true){
             isExecuted=false;
+            currentModel = animate.switchModel(scene.getObjectByName(modelSwitcher()));
+            burgerHitbox.setFromObject(currentModel);
+            console.log(currentModel);
+            animate.startAnimation();
+        }else if(burgerHitbox.intersectsBox(passedIronHitbox) && isExecuted==false){
+            isExecuted=true;        
         }
     }
 
@@ -108,6 +83,7 @@ import { Animation } from "./animations.js";
 
     renderer.domElement.addEventListener("click", () =>{
         if(kitchenHitbox.intersectsBox(burgerHitbox)){
+            
             score+=1;
             animate.setSmash();
         }else{
