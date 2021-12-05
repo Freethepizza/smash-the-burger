@@ -23,27 +23,27 @@ export async function loadAssets(){
 
     const burger = burgerData.scene;
     burger.name = "burger";
-    burger.scale.set(.2, .2, .2);
+    burger.scale.set(.25, .25, .25);
     burger.position.set(1,0,-.6);
 
     const rapper = rapperData.scene;
     rapper.name = "rapper";
-    rapper.scale.set(.2, .2, .2);
+    rapper.scale.set(.25, .25, .25);
     rapper.position.set(1.12,0,-.6);
 
     const skater = skaterData.scene;
     skater.name = "skater";
-    skater.scale.set(.2, .2, .2);
+    skater.scale.set(.25, .25, .25);
     skater.position.set(1.12,0,-.6);
 
     const muppie = muppieData.scene;
     muppie.name = "muppie";
-    muppie.scale.set(.2, .2, .2);
+    muppie.scale.set(.25, .25, .25);
     muppie.position.set(1.12,0,-.6);
 
     const gamer = gamerData.scene;
     gamer.name = "gamer";
-    gamer.scale.set(.2, .2, .2);
+    gamer.scale.set(.25, .25, .25);
     gamer.position.set(1.12,0,-.6);
 
     const chef = chefData.scene;

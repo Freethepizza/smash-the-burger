@@ -72,7 +72,7 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
             isExecuted=false;
             currentModel = animate.switchModel(scene.getObjectByName(modelSwitcher()));
             burgerHitbox.setFromObject(currentModel);
-            console.log(currentModel);
+            //console.log(currentModel);
             animate.startAnimation();
         }else if(burgerHitbox.intersectsBox(passedIronHitbox) && isExecuted==false){
             isExecuted=true;        
