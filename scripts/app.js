@@ -17,7 +17,7 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
 
     const {kitchen, burger,rapper,skater,muppie,gamer,chef} = await loadAssets();
     scene.add(kitchen,burger,rapper,skater,muppie,gamer,chef);
-    animate.model = burger;
+    animate.model = rapper;
     //animate.startAnimation()
     //Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -47,10 +47,10 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
 
     //Renderer
     animate.startAnimation()
-    var currentModel = burger;
+    var currentModel = rapper;
     const renderer = new THREE.WebGLRenderer({antialias: true,alpha: true});
     renderer.setSize(375, 812);
-    var controls = new OrbitControls( camera, renderer.domElement );
+    //var controls = new OrbitControls( camera, renderer.domElement );
     var burgerHitbox = new THREE.Box3().setFromObject(currentModel);
     var kitchenHitbox = new THREE.Box3().setFromObject(mesh);
     var passedIronHitbox = new THREE.Box3().setFromObject(mesh2);
@@ -59,7 +59,7 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
     var isExecuted = false;
     const clock = new THREE.Clock();
     const tick = function() {
-        controls.update()
+        //controls.update()
         requestAnimationFrame(tick);
         render();
         document.getElementById("points").innerText = score;  
