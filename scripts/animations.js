@@ -14,15 +14,15 @@ const burgerAnimation = (model) => {
     timeline.to(model.position,{x:1.12,duration:.8,ease:'linear'})
     timeline.add(()=>unsetSmash(model))
 }
+
 const smashAnimation = (model) =>{
     let timeline2 = gsap.timeline({ease: "linear"});
     timeline2.to(model.scale,{y:.1,duration:.1,ease:'linear'})
 }
 
 const unsetSmash = (model) =>{
-    model.scale.y = .3;
+    model.scale.y = .2;
 }
-
 
 /*
 0 = basic
@@ -30,9 +30,8 @@ const unsetSmash = (model) =>{
 2 = rapper
 3 = muppie
 4 = gamer
-
-each model needs to have an animation
 */
+
 export const modelSwitcher = () =>{
     var modelNumber = Math.floor(Math.random() * 4)+0 ;
     switch(modelNumber){

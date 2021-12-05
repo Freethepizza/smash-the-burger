@@ -15,8 +15,8 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
     const animate = new Animation();
     //Loading
 
-    const {kitchen, burger,rapper,skater,muppie,gamer} = await loadAssets();
-    scene.add(kitchen,burger,rapper,skater,muppie,gamer);
+    const {kitchen, burger,rapper,skater,muppie,gamer,chef} = await loadAssets();
+    scene.add(kitchen,burger,rapper,skater,muppie,gamer,chef);
     animate.model = burger;
     //animate.startAnimation()
     //Light
@@ -32,6 +32,8 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
     const camera = new THREE.OrthographicCamera(width / -2,width / 2,height / 2,height / -2, 1, 100);
     camera.position.set(.2,2,4);
     camera.lookAt(0,0,0);
+
+
     //Main game
     function gameOn(){
         /* 
@@ -41,6 +43,7 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
         - Muppie
         */
     }
+
 
     //Renderer
     animate.startAnimation()
@@ -63,7 +66,7 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
         burgerHitbox.setFromObject(currentModel);
         kitchenHitbox.setFromObject(mesh);
         if(burgerHitbox.intersectsBox(passedIronHitbox) && isExecuted==false && animate.smashStatus()==false){
-            score -=1;
+            //score -=1;
             isExecuted=true;
         }else if(burgerHitbox.intersectsBox(startHitbox) && isExecuted == true){
             isExecuted=false;
