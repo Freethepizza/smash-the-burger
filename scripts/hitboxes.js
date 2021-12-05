@@ -6,7 +6,7 @@ import * as THREE from "./dependencies/three.module.js";
     export const mesh = new THREE.Mesh( geometry, material );
     mesh.position.set(0,1,2.35);
     mesh.scale.set(.7,1,1)
-    //mesh.visible = false;
+    mesh.visible = false;
     //IRON HITBOX
     
     //PASSED IRON HITBOX

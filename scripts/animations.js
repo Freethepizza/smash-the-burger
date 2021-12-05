@@ -81,7 +81,8 @@ const unsetSmash = (model) =>{
 */
 
 export const modelSwitcher = () =>{
-    var modelNumber = Math.floor(Math.random() * 4)+0 ;
+    var modelNumber = Math.floor(Math.random() * (4 - 0 + 1)) + 0 ;
+    console.log(modelNumber)
     switch(modelNumber){
         case 0:
             currentModelName = "burger"
@@ -128,6 +129,10 @@ export class Animation{
                 burgerAnimation(this.model);
                 break;
             case "muppie":
+                //console.log(`You are animating ${this.model.name}`);
+                burgerAnimation(this.model);
+                break;
+            case "gamer":
                 //console.log(`You are animating ${this.model.name}`);
                 burgerAnimation(this.model);
                 break;
