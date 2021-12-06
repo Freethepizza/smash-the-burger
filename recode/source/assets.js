@@ -2,42 +2,16 @@ import * as THREE from "./dependencies/three.module.js";
 import { loadAssets } from "./loader.js";
 import gsap from "./dependencies/gsap/index.js";
 
- 
-var kitchenModel;
-var burgerModel;
-var skaterModel;
-var rapperModel;
-var muppieModel;
-var gamerModel;
-var chefModel;
-
-async function init() {
-    const a = await loadAssets();
-    kitchenModel = a.kitchenModel;
-    burgerModel = a.burgerModel;
-    skaterModel = a.skaterModel;
-    rapperModel = a.rapperModel;
-    muppieModel = a.muppieModel;
-    gamerModel = a.gamerModel;
-    chefModel = a.chefModel;
-    return [kitchenModel,
-        burgerModel,
-        skaterModel,
-        rapperModel,
-        muppieModel,
-        gamerModel,
-        chefModel]
-}
-await init();
 
 
-/*const {kitchenModel, 
+
+const {kitchenModel, 
     burgerModel,
     rapperModel,
     skaterModel,
     muppieModel,
     gamerModel,
-    chefModel} = await loadAssets();*/
+    chefModel} = await loadAssets();
 
 
 
@@ -103,7 +77,7 @@ export const modelSwitcher = (delta) =>{
 }
 
 class Burger{
-        constructor(model,model_name,model_number){
+    constructor(model,model_name,model_number){
         this.model_number = 0;
         this.model = burgerModel;
         this.model_name = 'burger';
