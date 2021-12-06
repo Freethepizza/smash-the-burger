@@ -1,44 +1,16 @@
 import * as THREE from "./dependencies/three.module.js";
 import { loadAssets } from "./loader.js";
 import gsap from "./dependencies/gsap/index.js";
-import { GLTFLoader } from "./dependencies/GLTFLoader.js";
-const loader = new GLTFLoader();
 
-/*const {kitchenModel, 
+const {kitchenModel, 
     burgerModel,
     rapperModel,
     skaterModel,
     muppieModel,
     gamerModel,
-    chefModel} = await loadAssets();*/
+    chefModel} = await loadAssets();
 
-const burgerData =  await loader.loadAsync("../assets/burger.glb");
-const burgerModel = burgerData.scene
-console.log(burgerData)
 
-const rapperData =  await loader.loadAsync("../assets/burger.glb");
-const rapperModel = burgerData.scene
-console.log(rapperData)
-
-const skaterData =  await loader.loadAsync("../assets/burger.glb");
-const skaterModel = burgerData.scene
-console.log(skaterData)
-
-const muppieData =  await loader.loadAsync("../assets/burger.glb");
-const muppieModel = burgerData.scene
-console.log(muppieData)
-
-const gamerData =  await loader.loadAsync("../assets/burger.glb");
-const gamerModel = burgerData.scene
-console.log(gamerData)
-
-const kitchenData =  await loader.loadAsync("../assets/burger.glb");
-const kitchenModel = burgerData.scene
-console.log(kitchenData)
-
-const chefData =  await loader.loadAsync("../assets/burger.glb");
-const chefModel = burgerData.scene
-console.log(chefData)
 
 var lastNumber;
 var nextNumber;
