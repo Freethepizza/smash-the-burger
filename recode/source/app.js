@@ -1,7 +1,7 @@
 import * as THREE from "./dependencies/three.module.js";
 import {burger,addAssets,setIronHitbox} from "./assets.js";
 
-(async () =>{
+
     const scene = new THREE.Scene()
     addAssets(scene);
     const ironHitbox = setIronHitbox();
@@ -36,4 +36,3 @@ import {burger,addAssets,setIronHitbox} from "./assets.js";
     const render = () => {renderer.render(scene,camera)}
     tick();
     document.body.appendChild(renderer.domElement)
-})()
