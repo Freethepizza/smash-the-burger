@@ -1,14 +1,15 @@
 import * as THREE from "./dependencies/three.module.js";
 import { loadAssets } from "./loader.js";
 import gsap from "./dependencies/gsap/index.js";
+var
 
-const {kitchenModel, 
+{kitchenModel, 
     burgerModel,
     rapperModel,
     skaterModel,
     muppieModel,
     gamerModel,
-    chefModel} = await loadAssets();
+    chefModel} =  (await loadAssets());
 
 
 var lastNumber;
