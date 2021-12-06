@@ -12,17 +12,38 @@ const {kitchenModel,
 
 
 var lastNumber;
-
+var nextNumber;
 
 
 function randomExcluded(lastNumber) {
-    var n = Math.floor(Math.random() * (4-0) + 0);
+    var n = Math.floor(Math.random() * (3-0) + 0);
     if (n >= lastNumber) n++;
     return n;
 }
+
+function nextModel(last){
+    var arr;
+    if(last === 0){
+        arr = [1,2,3,4];
+       
+    }
+    else if(last === 1){
+        arr = [0,2,3,4];
+    }
+    else if(last === 2){
+        arr = [0,1,3,4];
+    }
+    else if(last === 3){
+        arr = [0,1,2,4];
+    }
+    else if(last === 4){
+        arr = [0,1,2,3]
+    }
+    return arr[Math.floor(Math.random() * (3-0) + 0)]
+}
  
 export const modelSwitcher = (delta) =>{
-    var modelNumber = randomExcluded(lastNumber);
+    var modelNumber = nextModel(lastNumber);
     console.log(lastNumber);
     console.log(modelNumber)
     switch(modelNumber){
@@ -31,12 +52,12 @@ export const modelSwitcher = (delta) =>{
             console.log('burger');
             break;
         case 1:
-            skater.animate(delta);
-            console.log('skater');
-            break;
-        case 2:
             rapper.animate(delta);
             console.log('rapper');
+            break;
+        case 2:
+            skater.animate(delta);
+            console.log('skater');
             break;
         case 3:
             muppie.animate(delta);
