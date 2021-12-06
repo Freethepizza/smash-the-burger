@@ -1,5 +1,6 @@
 import * as THREE from "./dependencies/three.module.js";
 import {burger,addAssets,setIronHitbox} from "./assets.js";
+
 (async () =>{
     const scene = new THREE.Scene()
     addAssets(scene);
