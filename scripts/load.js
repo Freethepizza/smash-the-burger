@@ -17,48 +17,48 @@ export async function loadAssets(){
         loader.loadAsync("./assets/chef.glb")
     ]);
 
-    const kitchen = kitchenData.scene;
-    kitchen.scale.set(3, 3, 3);
-    kitchen.name = "kitchen";
+    const kitchenModel = kitchenData.scene;
+    kitchenModel.scale.set(3, 3, 3);
+    kitchenModel.name = "kitchen";
 
-    const burger = burgerData.scene;
-    burger.name = "burger";
-    burger.scale.set(.25, .25, .25);
-    burger.position.set(1,0,-.6);
+    const burgerModel = burgerData.scene;
+    burgerModel.name = "burger";
+    burgerModel.scale.set(.25, .25, .25);
+    burgerModel.position.set(1,0,-.6);
 
-    const rapper = rapperData.scene;
-    rapper.name = "rapper";
-    rapper.scale.set(.25, .25, .25);
-    rapper.position.set(1.12,0,-.6);
+    const rapperModel = rapperData.scene;
+    rapperModel.name = "rapper";
+    rapperModel.scale.set(.25, .25, .25);
+    rapperModel.position.set(1.12,0,-.6);
 
-    const skater = skaterData.scene;
-    skater.name = "skater";
-    skater.scale.set(.25, .25, .25);
-    skater.position.set(1.12,0,-.6);
+    const skaterModel = skaterData.scene;
+    skaterModel.name = "skater";
+    skaterModel.scale.set(.25, .25, .25);
+    skaterModel.position.set(1.12,0,-.6);
 
-    const muppie = muppieData.scene;
-    muppie.name = "muppie";
-    muppie.scale.set(.25, .25, .25);
-    muppie.position.set(1.12,0,-.6);
+    const muppieModel = muppieData.scene;
+    muppieModel.name = "muppie";
+    muppieModel.scale.set(.25, .25, .25);
+    muppieModel.position.set(1.12,0,-.6);
 
-    const gamer = gamerData.scene;
-    gamer.name = "gamer";
-    gamer.scale.set(.25, .25, .25);
-    gamer.position.set(1.12,0,-.6);
+    const gamerModel = gamerData.scene;
+    gamerModel.name = "gamer";
+    gamerModel.scale.set(.25, .25, .25);
+    gamerModel.position.set(1.12,0,-.6);
 
-    const chef = chefData.scene;
-    chef.name = "chef";
-    chef.scale.set(1,1,1);
-    chef.position.set(-.5,0,1.2);
+    const chefModel = chefData.scene;
+    chefModel.name = "chef";
+    chefModel.scale.set(1,1,1);
+    chefModel.position.set(-.5,0,1.2);
 
     return{
-        kitchen,
-        burger,
-        rapper,
-        skater,
-        muppie,
-        gamer,
-        chef
+        kitchenModel,
+        burgerModel,
+        rapperModel,
+        skaterModel,
+        muppieModel,
+        gamerModel,
+        chefModel
     }
     
 }
