@@ -1,9 +1,28 @@
+<<<<<<< HEAD
 import * as THREE from "./dependencies/three.module.js";
 import gsap from "./dependencies/gsap/index.js";
 
 
 var lastNumber;
 var nextNumber;
+=======
+import gsap from './dependencies/gsap/index.js';
+var smash;
+const burgerAnimation = (model) => {
+    let timeline = gsap.timeline({repeat:-1,ease: "linear"});
+    timeline.add(()=>{smash=false})
+    timeline.to(model.position,{y:1.1,duration:.8,ease:'linear'})
+    timeline.to(model.position,{z:2.2,duration:.8,ease:'linear'})
+    timeline.to(model.position,{x:-1.4,duration:.8,ease:'linear'})
+    timeline.to(model.position,{z:-0.6,duration:.8,ease:'linear'})
+    timeline.to(model.position,{y:0,duration:.8,ease:'linear'})
+    timeline.add(()=>unsetSmash(model))
+}
+const smashAnimation = (model) =>{
+    let timeline = gsap.timeline({ease: "linear"});
+    timeline.to(model.scale,{y:.1,duration:.1,ease:'linear'})
+}
+>>>>>>> parent of 8b7db4e (model switching added)
 
 function randomExcluded(lastNumber) {
     var n = Math.floor(Math.random() * (3-0) + 0);
@@ -11,6 +30,7 @@ function randomExcluded(lastNumber) {
     return n;
 }
 
+<<<<<<< HEAD
 function nextModel(last){
     var arr;
     if(last === 0){
@@ -58,6 +78,10 @@ export const modelSwitcher = (delta) =>{
             console.log('gamer');
             break;
     }
+=======
+const modelSwitcher = () =>{
+
+>>>>>>> parent of 8b7db4e (model switching added)
 }
 
 export class Burger{
@@ -91,6 +115,7 @@ export class Burger{
     add(scene){
         scene.add(this.model)
     }
+<<<<<<< HEAD
 }
 
 export class Rapper{//2 parones previos a pasar
@@ -125,6 +150,29 @@ export class Rapper{//2 parones previos a pasar
         scene.add(this.model)
     }
 }
+=======
+    output(){
+        console.log(this.model.position.x, this.model.position.y, this.model.position.z)
+    }
+    startAnimation(){
+        if(this.model.name == 'burger'){
+            console.log(`You are animating ${this.model.name}`);
+            burgerAnimation(this.model);
+        }
+    }
+    setSmash(){
+        smash = true;
+        smashAnimation(this.model)
+    }
+    unsetSmash(){
+        smash = false;
+        console.log('smashed ',smash );
+    }
+    smashStatus(){
+        return smash;
+    }
+    smashAnim(){
+>>>>>>> parent of 8b7db4e (model switching added)
 
 export class Skater{//acelera exponencialmente
     constructor(model,model_name,model_number){
@@ -155,6 +203,7 @@ export class Skater{//acelera exponencialmente
         timeline.add(()=>{this.model.visible = true})
         //timeline.add(()=>{modelSwitcher(delta,this.model_number)})
     }
+<<<<<<< HEAD
     add(scene){
         scene.add(this.model)
     }
@@ -171,6 +220,10 @@ export class Muppie{//hace parón y sigue
         this.model.name = this.model_name;
         this.model.scale.set(.25,.25,.25);
         this.model.position.set(1,0,-.6);
+=======
+    stop(){
+        
+>>>>>>> parent of 8b7db4e (model switching added)
     }
     animate(delta){
         const timeline = gsap.timeline({ease: "linear"});

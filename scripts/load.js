@@ -7,14 +7,22 @@ const loader = new GLTFLoader();
 
 
 export async function loadAssets(){
+<<<<<<< HEAD
     const [kitchenData, burgerData,rapperData,skaterData,muppieData,gamerData,chefData] = await Promise.all([
+=======
+    const [kitchenData, burgerData,trapperData,skaterData,muppieData,gamerData] = await Promise.all([
+>>>>>>> parent of 8b7db4e (model switching added)
         loader.loadAsync("./assets/kitchen.glb"),
         loader.loadAsync("./assets/burger.glb"),
         loader.loadAsync("./assets/rapper.glb"),
         loader.loadAsync("./assets/skater.glb"),
         loader.loadAsync("./assets/muppie.glb"),
+<<<<<<< HEAD
         loader.loadAsync("./assets/gamer.glb"),
         loader.loadAsync("./assets/chef.glb")
+=======
+        //loader.loadAsync("./assets/nerd.glb"),
+>>>>>>> parent of 8b7db4e (model switching added)
     ]);
 
     const kitchenModel = kitchenData.scene;
@@ -26,6 +34,7 @@ export async function loadAssets(){
     burgerModel.scale.set(.25, .25, .25);
     burgerModel.position.set(1,0,-.6);
 
+<<<<<<< HEAD
     const rapperModel = rapperData.scene;
     rapperModel.name = "rapper";
     rapperModel.scale.set(.25, .25, .25);
@@ -59,6 +68,11 @@ export async function loadAssets(){
         muppieModel,
         gamerModel,
         chefModel
+=======
+    return{
+        kitchen,
+        burger
+>>>>>>> parent of 8b7db4e (model switching added)
     }
     
 }
