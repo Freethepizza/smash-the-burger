@@ -6,7 +6,8 @@ import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
-import {Animator} from './animator.js'
+import {Animator} from './animator.js';
+import './core.js';
 
 let camera;
 let controls;
