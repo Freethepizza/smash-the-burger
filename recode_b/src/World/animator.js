@@ -1,5 +1,41 @@
 import gsap from './dependencies/gsap/index.js';
 
+function nextModel(last){
+    var arr;
+    if(last === 0){arr = [1,2,3,4];}
+    else if(last === 1){arr = [0,2,3,4];}
+    else if(last === 2){arr = [0,1,3,4];}
+    else if(last === 3){arr = [0,1,2,4];}else if(last === 4){arr = [0,1,2,3]}
+    return arr[Math.floor(Math.random() * (3-0) + 0)]
+}
+ 
+export const modelSwitcher = (delta) =>{
+    var modelNumber = nextModel(lastNumber);
+    console.log(lastNumber);
+    console.log(modelNumber)
+    switch(modelNumber){
+        case 0:
+            burger.animate(delta);
+            console.log('burger');
+            break;
+        case 1:
+            rapper.animate(delta);
+            console.log('rapper');
+            break;
+        case 2:
+            skater.animate(delta);
+            console.log('skater');
+            break;
+        case 3:
+            muppie.animate(delta);
+            console.log('muppie');
+            break;
+        case 4: 
+            gamer.animate(delta);
+            console.log('gamer');
+            break;
+    }
+}
 
 export class Animator{
     constructor(scene){
@@ -8,9 +44,72 @@ export class Animator{
     }
     onCreate(){
         console.log(this.scene);
+    }
+    animate(){
         const timeline = gsap.timeline({ease:'linear'})
-        timeline.to(this.scene.getObjectByName('burger').position,{y:.36,duration:.8})
-        timeline.to(this.scene.getObjectByName('burger').position,{z:.5,duration:.8})
-        timeline.play()
+        timeline.to(this.scene.getObjectByName('burger').position,{y:.36,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').position,{z:.75,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').rotation,{y:-1.5,duration:.1,ease:'linear'})
+        timeline.add(()=>this.animate2())
+        timeline.to(this.scene.getObjectByName('burger').position,{x:-.15,duration:.4,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').position,{x:-.35,duration:.2,ease:'linear'})
+        //timeline.add(this.animate2())
+        timeline.to(this.scene.getObjectByName('burger').rotation,{y:-3,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').position,{z:-.2,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').position,{y:0,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').position,{x:.325,duration:0,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('burger').rotation,{y:0,duration:.1,ease:'linear'})
+    }
+    animate2(){
+        const timeline = gsap.timeline({ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{y:.36,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{z:.75,duration:.8,ease:'linear'})
+        timeline.add(()=>this.animate3())
+        timeline.to(this.scene.getObjectByName('skater').rotation,{y:-1.5,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{x:-.35,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').rotation,{y:-3,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{z:-.2,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{y:0,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').position,{x:.38,duration:0,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('skater').rotation,{y:0,duration:0,ease:'linear'})
+    }
+    animate3(){
+        const timeline = gsap.timeline({ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{y:.36,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{z:.75,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').rotation,{y:-1.5,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{x:-.35,duration:.8,ease:'linear'})
+        timeline.add(()=>this.animate4())
+        timeline.to(this.scene.getObjectByName('rapper').rotation,{y:-3,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{z:-.2,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{y:0,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').position,{x:.38,duration:0,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('rapper').rotation,{y:0,duration:0,ease:'linear'})
+    }
+    animate4(){
+        const timeline = gsap.timeline({ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').position,{y:.36,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').position,{z:.75,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').rotation,{y:-1.5,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').position,{x:-.35,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').rotation,{y:-3,duration:.1,ease:'linear'})
+        timeline.add(()=>this.animate5())
+        timeline.to(this.scene.getObjectByName('muppie').position,{z:-.2,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').position,{y:0,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').position,{x:.38,duration:0,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('muppie').rotation,{y:0,duration:0,ease:'linear'})
+    }
+    animate5(){
+        const timeline = gsap.timeline({ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{y:.36,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{z:.75,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').rotation,{y:-1.5,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{x:-.35,duration:.8,ease:'linear'})
+        timeline.add(()=>this.animate())
+        timeline.to(this.scene.getObjectByName('gamer').rotation,{y:-3,duration:.1,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{z:-.2,duration:.8,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{y:0,duration:.2,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').position,{x:.38,duration:0,ease:'linear'})
+        timeline.to(this.scene.getObjectByName('gamer').rotation,{y:0,duration:0,ease:'linear'})
     }
 }

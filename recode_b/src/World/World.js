@@ -35,6 +35,7 @@ class World {
     const { kitchen, burger, skater, rapper, muppie, gamer, chef } = await loadBirds();
     scene.add(kitchen, burger, skater, rapper, muppie, gamer, chef);
     const animator = new Animator(scene);
+    animator.animate();
   }
 
   render() {
