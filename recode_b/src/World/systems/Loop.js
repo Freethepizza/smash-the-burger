@@ -1,6 +1,7 @@
 import { Clock } from 'https://cdn.skypack.dev/three@0.132.2';
 import * as THREE from '../dependencies/three.module.js';
-import { ironHitbox } from '../core.js';
+import { ironHitbox, Singleton } from '../core.js';
+
 
 const clock = new Clock();
 var burgerHitBox;
@@ -9,13 +10,13 @@ var skaterHitBox;
 var muppieHitBox;
 var gamerHitBox;
 var score = 0
+
 class Loop {
   constructor(camera, scene, renderer) {
     this.camera = camera;
     this.scene = scene;
     this.renderer = renderer;
     this.updatables = [];
-    
   }
 
   update(){
@@ -24,6 +25,7 @@ class Loop {
     skaterHitBox = new THREE.Box3().setFromObject(this.scene.getObjectByName('skater'));
     muppieHitBox = new THREE.Box3().setFromObject(this.scene.getObjectByName('muppie'));
     gamerHitBox = new THREE.Box3().setFromObject(this.scene.getObjectByName('gamer'));
+    
   }
 
   start() {
@@ -45,6 +47,7 @@ class Loop {
   }
 
   tick() {
+  
     // only call the getDelta function once per frame!
     const delta = clock.getDelta();
 
@@ -52,7 +55,7 @@ class Loop {
     // console.log(
     //   `The last frame rendered in ${delta * 1000} milliseconds`,
     // );
-
+    
     for (const object of this.updatables) {
       object.tick(delta);
     }

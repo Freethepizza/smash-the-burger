@@ -12,6 +12,7 @@ async function main() {
 
   // start the animation loop
   world.start();
+
 }
 
 main().catch((err) => {

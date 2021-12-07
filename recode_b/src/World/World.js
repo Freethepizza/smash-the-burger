@@ -1,4 +1,4 @@
-import { loadBirds } from './components/birds/birds.js';
+import { loadBurgers } from './components/birds/burgers.js';
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
@@ -7,8 +7,7 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 import {Animator} from './animator.js';
-import { mesh } from './core.js';
-import './core.js';
+import { mesh, Singleton } from './core.js';
 
 let camera;
 let controls;
@@ -24,7 +23,7 @@ class World {
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
     controls = createControls(camera, renderer.domElement);
-
+    Singleton.scene = scene;
     const { ambientLight, mainLight } = createLights();
 
     loop.updatables.push(controls);
@@ -34,7 +33,7 @@ class World {
   }
 
   async init() {
-    const { kitchen, burger, skater, rapper, muppie, gamer, chef } = await loadBirds();
+    const { kitchen, burger, skater, rapper, muppie, gamer, chef } = await loadBurgers();
     scene.add(kitchen, burger, skater, rapper, muppie, gamer, chef,mesh);
     
   }
@@ -55,5 +54,6 @@ class World {
     loop.stop();
   }
 }
+
 
 export { World };

@@ -1,9 +1,12 @@
 import * as THREE from './dependencies/three.module.js';
 
 
-
-
-
+export class Singleton{
+    constructor(){
+        this.scene = scene;
+        this.burger = this.scene.getObjectByName('burger');
+    }
+}
 
 const geometry = new THREE.BoxGeometry( .02, .2, .2 );
 const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
