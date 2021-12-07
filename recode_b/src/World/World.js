@@ -7,6 +7,7 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 import {Animator} from './animator.js';
+import { mesh } from './core.js';
 import './core.js';
 
 let camera;
@@ -34,17 +35,20 @@ class World {
 
   async init() {
     const { kitchen, burger, skater, rapper, muppie, gamer, chef } = await loadBirds();
-    scene.add(kitchen, burger, skater, rapper, muppie, gamer, chef);
-    const animator = new Animator(scene);
-    animator.animate();
+    scene.add(kitchen, burger, skater, rapper, muppie, gamer, chef,mesh);
+    
   }
-
+  
   render() {
     renderer.render(scene, camera);
+    
+    
   }
 
   start() {
     loop.start();
+    const animator = new Animator(scene);
+    animator.animate();
   }
 
   stop() {

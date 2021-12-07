@@ -86,28 +86,21 @@ export class Animator{
     }
     modelSwitcher(lastNumber){
         var modelNumber = nextModel(lastNumber);
-        console.log(lastNumber);
-        console.log(modelNumber)
         switch(modelNumber){
             case 0:
                 this.animate()
-                console.log('burger');
                 break;
             case 1:
                 this.animate2()
-                console.log('skater');
                 break;
             case 2:
                 this.animate3()
-                console.log('rapper');
                 break;
             case 3:
                 this.animate4()
-                console.log('muppie');
                 break;
             case 4: 
                 this.animate5()
-                console.log('gamer')
                 break;
         }
     }

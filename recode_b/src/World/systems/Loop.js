@@ -65,35 +65,35 @@ document.getElementById('scene-container').addEventListener('click', ()=>{
     console.log('burger pass');
     score += 50;
   }else{
-    console.log('no pass');
+    //console.log('no pass');
   }
 
   if(rapperHitBox.intersectsBox(ironHitbox)){
     console.log('rapper pass');
     score += 200;
   }else{
-    console.log('no pass');
+    //console.log('no pass');
   }
 
   if(skaterHitBox.intersectsBox(ironHitbox)){
     console.log('skater pass');
     score += 500;
   }else{
-    console.log('no pass');
+    //console.log('no pass');
   }
 
   if(muppieHitBox.intersectsBox(ironHitbox)){
     console.log('muppie pass');
     score += 100;
   }else{
-    console.log('no pass');
+    //console.log('no pass');
   }
 
   if(gamerHitBox.intersectsBox(ironHitbox)){
     console.log('gamer pass');
     score += 300;
   }else{
-    console.log('no pass');
+    //console.log('no pass');
   }
 })
 
