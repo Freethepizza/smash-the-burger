@@ -3,7 +3,7 @@ import { GLTFLoader } from "./dependencies/GLTFLoader.js";
 
 const loader = new GLTFLoader();
 
-export async function loadAssets(){
+var loadAssets = async function(){
     const [kitchenData, 
         burgerData,
         rapperData,
@@ -46,3 +46,5 @@ export async function loadAssets(){
             chefModel
         }
 }
+
+export {loadAssets}

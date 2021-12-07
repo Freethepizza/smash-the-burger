@@ -10,8 +10,6 @@ const {kitchenModel,
     gamerModel,
     chefModel} = await loadAssets();
 
-
-
 var lastNumber;
 var nextNumber;
 
