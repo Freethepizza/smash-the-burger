@@ -84,7 +84,7 @@ export class Animator{
         timeline.to(this.scene.getObjectByName('gamer').position,{x:.38,duration:0,ease:'linear'})
         timeline.to(this.scene.getObjectByName('gamer').rotation,{y:0,duration:0,ease:'linear'})
     }
-    modelSwitcher = (lastNumber) =>{
+    modelSwitcher(lastNumber){
         var modelNumber = nextModel(lastNumber);
         console.log(lastNumber);
         console.log(modelNumber)
