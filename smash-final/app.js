@@ -19,7 +19,7 @@ manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 };
 manager.onLoad = function ( ) {
 	console.log( 'Loading complete!');
-    scene.add(kitchen,burger,rapper,gamer,muppie,skater,chef,helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie);
+    scene.add(kitchen,burger,rapper,gamer,muppie,skater,chef,helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie,helperSkater);
     game.level1()
 };
 manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
@@ -84,27 +84,27 @@ const tick = function() {
     if(boxBurger.intersectsBox(boxRight)){
         burger.isActive = true;
     }else if(boxBurger.intersectsBox(boxLeft)){
-        burger.isActive = false
+        burger.isActive = false;
     }
     if(boxRapper.intersectsBox(boxRight)){
         rapper.isActive = true;
     }else if(boxRapper.intersectsBox(boxLeft)){
-        rapper.isActive = false
+        rapper.isActive = false;
     }
     if(boxMuppie.intersectsBox(boxRight)){
         muppie.isActive = true;
     }else if(boxMuppie.intersectsBox(boxLeft)){
-        muppie.isActive = false
+        muppie.isActive = false;
     }
     if(boxGamer.intersectsBox(boxRight)){
         gamer.isActive = true;
     }else if(boxGamer.intersectsBox(boxLeft)){
-        gamer.isActive = false
+        gamer.isActive = false;
     }
     if(boxSkater.intersectsBox(boxRight)){
         skater.isActive = true;
-    }else if(boxGamer.intersectsBox(boxLeft)){
-        skater.isActive = false
+    }else if(boxSkater.intersectsBox(boxLeft)){
+        skater.isActive = false;
     }
 }
 
@@ -112,6 +112,7 @@ document.body.addEventListener('click', ()=>{
     if(burger.isActive && boxBurger.intersectsBox(boxSmash)){
         console.log('burger hit!!!');
         game.score+=50;
+        burger.smashed=true;
     }else if(burger.isActive && !boxBurger.intersectsBox(boxSmash)){
         console.log('burger no hit!!!');
         game.lifes -=1;
@@ -122,6 +123,7 @@ document.body.addEventListener('click', ()=>{
     if(rapper.isActive && boxRapper.intersectsBox(boxSmash)){
         console.log('rapper hit!!!');
         game.score+=200;
+        rapper.smashed=true;
     }else if(rapper.isActive && !boxRapper.intersectsBox(boxSmash)){
         console.log('rapper no hit!!!')
         game.lifes -=1;
@@ -132,6 +134,7 @@ document.body.addEventListener('click', ()=>{
     if(muppie.isActive && boxMuppie.intersectsBox(boxSmash)){
         console.log('muppie hit!!!');
         game.score+=100;
+        muppie.smashed = true;
     }else if(muppie.isActive && !boxMuppie.intersectsBox(boxSmash)){
         console.log('muppie no hit!!!')
         game.lifes -=1;
@@ -140,8 +143,9 @@ document.body.addEventListener('click', ()=>{
     }
 
     if(gamer.isActive && boxGamer.intersectsBox(boxSmash)){
-        console.log('muppie hit!!!');
+        console.log('gamer hit!!!');
         game.score+=100;
+        gamer.smashed=true;
     }else if(gamer.isActive && !boxGamer.intersectsBox(boxSmash)){
         console.log('gamer no hit!!!')
         game.lifes -=1;
@@ -152,7 +156,8 @@ document.body.addEventListener('click', ()=>{
     if(skater.isActive && boxSkater.intersectsBox(boxSmash)){
         console.log('skater hit!!!');
         game.score+=400;
-    }else if(gamer.isActive && !boxSkater.intersectsBox(boxSmash)){
+        skater.smashed=true;
+    }else if(skater.isActive && !boxSkater.intersectsBox(boxSmash)){
         console.log('skater no hit!!!')
         game.lifes -=1;
     }else if(skater.isActive === false){

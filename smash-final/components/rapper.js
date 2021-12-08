@@ -9,6 +9,7 @@ export class Rapper extends THREE.Group{
         this.manager = manager;
         this.onCreate();
         this.isActive = false;
+        this.smashed = false;
     }
     onCreate(){
         new GLTFLoader(this.manager).load(
@@ -36,6 +37,7 @@ export class Rapper extends THREE.Group{
         timeline.to(this.position,{y:0,duration:.3,ease:'linear'})
         timeline.to(this.position,{x:1.3,duration:0,ease:'linear'})
         timeline.to(this.rotation,{y:0,duration:0,ease:'linear'})
+        timeline.add(()=>this.smashed=false)
     }
     animate2(){
         const timeline = gsap.timeline({ease:'linear'});
@@ -48,5 +50,6 @@ export class Rapper extends THREE.Group{
         timeline.to(this.position,{y:0,duration:.3,ease:'linear'})
         timeline.to(this.position,{x:1.3,duration:0,ease:'linear'})
         timeline.to(this.rotation,{y:0,duration:0,ease:'linear'})
+        timeline.add(()=>this.smashed=false)
     }
 }

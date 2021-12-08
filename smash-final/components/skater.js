@@ -9,6 +9,7 @@ export class Skater extends THREE.Group{
         this.manager = manager;
         this.isActive = false;
         this.onCreate();
+        this.smashed = false;
     }
     onCreate(){
         new GLTFLoader(this.manager).load(
@@ -34,5 +35,6 @@ export class Skater extends THREE.Group{
         timeline.to(this.position,{y:0,duration:.3,ease:'linear'})
         timeline.to(this.position,{x:1.3,duration:0,ease:'linear'})
         timeline.to(this.rotation,{y:0,duration:0,ease:'linear'})
+        timeline.add(()=>this.smashed=false)
     }
 }
