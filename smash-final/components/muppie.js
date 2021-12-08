@@ -26,12 +26,10 @@ export class Muppie extends THREE.Group{
     animate(){
         const timeline = gsap.timeline({ease:'linear'});
         timeline.to(this.position,{y:1.25,duration:.3,ease:'linear'})
-        timeline.add(()=>this.isActive=true)
         timeline.to(this.position,{z:2.6,duration:.8,ease:'linear'})
         timeline.to(this.rotation,{y:-1.5,duration:.05,ease:'linear'})
         timeline.to(this.position,{x:.65,duration:.16,ease:'linear'})
         timeline.to(this.position,{x:-1.4,duration:.64,ease:'linear'},"+=.7")
-        timeline.add(()=>this.isActive=false)
         timeline.to(this.rotation,{y:-3.15,duration:.1,ease:'linear'})
         timeline.to(this.position,{z:-.8,duration:.8,ease:'linear'})
         timeline.to(this.position,{y:0,duration:.3,ease:'linear'})

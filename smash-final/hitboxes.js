@@ -16,12 +16,12 @@ boxSmash.setFromCenterAndSize( new THREE.Vector3( 0, 1.5, 2.7 ), new THREE.Vecto
 export const helperSmash = new THREE.Box3Helper( boxSmash, 0xffff00 );
 
 export const boxLeft = new THREE.Box3();
-boxLeft.setFromCenterAndSize( new THREE.Vector3( -1.3, 1.5, 1.6 ), new THREE.Vector3( 1, .4, 3 ) );
+boxLeft.setFromCenterAndSize( new THREE.Vector3( -1.3, 1.5, 2.6 ), new THREE.Vector3( 1, .4, .8 ) );
 
 export const helperLeft = new THREE.Box3Helper( boxLeft, 0xffff00 );
 
 export const boxRight = new THREE.Box3();
-boxRight.setFromCenterAndSize( new THREE.Vector3( 1.2, 1.5, 1.6 ), new THREE.Vector3( 1, .4, 3 ) );
+boxRight.setFromCenterAndSize( new THREE.Vector3( 1.2, 1.5, 2.6 ), new THREE.Vector3( 1, .4, .8 ) );
 
 export const helperRight = new THREE.Box3Helper( boxRight, 0xffff00 );
 

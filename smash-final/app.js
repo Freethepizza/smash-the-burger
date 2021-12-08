@@ -50,7 +50,7 @@ directionalLight.position.set(4,4,0)
 scene.add(directionalLight);
 
 //Camera
-const width = 4;
+const width = 5;
 const height = width * (window.innerHeight/window.innerWidth);
 const camera = new THREE.OrthographicCamera(width / -2,width / 2,height / 2,height / -2, 1, 100);
 camera.position.set(.2,2,4);
@@ -74,16 +74,32 @@ const tick = function() {
     requestAnimationFrame(tick);
     render();
     document.getElementById("score").innerText = game.score;
+    document.getElementById("lifes").innerText = game.lifes;
     boxBurger.setFromObject(burger);
     boxRapper.setFromObject(rapper);
     boxMuppie.setFromObject(muppie);
     boxGamer.setFromObject(gamer);
-    //console.log(burger.isActive)
-   /* if(boxBurger.intersectsBox(boxRight)){
+
+    if(boxBurger.intersectsBox(boxRight)){
         burger.isActive = true;
     }else if(boxBurger.intersectsBox(boxLeft)){
         burger.isActive = false
-    }*/
+    }
+    if(boxRapper.intersectsBox(boxRight)){
+        rapper.isActive = true;
+    }else if(boxRapper.intersectsBox(boxLeft)){
+        rapper.isActive = false
+    }
+    if(boxMuppie.intersectsBox(boxRight)){
+        muppie.isActive = true;
+    }else if(boxMuppie.intersectsBox(boxLeft)){
+        muppie.isActive = false
+    }
+    if(boxGamer.intersectsBox(boxRight)){
+        gamer.isActive = true;
+    }else if(boxGamer.intersectsBox(boxLeft)){
+        gamer.isActive = false
+    }
 }
 
 document.body.addEventListener('click', ()=>{
@@ -91,7 +107,8 @@ document.body.addEventListener('click', ()=>{
         console.log('burger hit!!!');
         game.score+=50;
     }else if(burger.isActive && !boxBurger.intersectsBox(boxSmash)){
-        console.log('burger no hit!!!')
+        console.log('burger no hit!!!');
+        game.lifes -=1;
     }else if(burger.isActive === false){
         console.log('burger not active')
     }
@@ -101,6 +118,7 @@ document.body.addEventListener('click', ()=>{
         game.score+=200;
     }else if(rapper.isActive && !boxRapper.intersectsBox(boxSmash)){
         console.log('rapper no hit!!!')
+        game.lifes -=1;
     }else if(rapper.isActive === false){
         console.log('rapper not active')
     }
@@ -110,6 +128,7 @@ document.body.addEventListener('click', ()=>{
         game.score+=100;
     }else if(muppie.isActive && !boxMuppie.intersectsBox(boxSmash)){
         console.log('muppie no hit!!!')
+        game.lifes -=1;
     }else if(muppie.isActive === false){
         console.log('muppie not active')
     }
@@ -119,6 +138,7 @@ document.body.addEventListener('click', ()=>{
         game.score+=100;
     }else if(gamer.isActive && !boxGamer.intersectsBox(boxSmash)){
         console.log('gamer no hit!!!')
+        game.lifes -=1;
     }else if(gamer.isActive === false){
         console.log('gamer not active')
     }
