@@ -44,3 +44,9 @@ export const boxGamer = new THREE.Box3();
 boxGamer.setFromCenterAndSize( new THREE.Vector3( 1.2, 1.5, 1.6 ), new THREE.Vector3( 1, .4, 3 ) );
 
 export const helperGamer = new THREE.Box3Helper( boxGamer, 0xffff00 );
+
+
+export const boxSkater = new THREE.Box3();
+boxGamer.setFromCenterAndSize( new THREE.Vector3( 1.2, 1.5, 1.6 ), new THREE.Vector3( 1, .4, 3 ) );
+
+export const helperSkater = new THREE.Box3Helper( boxSkater, 0xffff00 );

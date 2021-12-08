@@ -34,5 +34,7 @@ export class Gamer extends THREE.Group{
         timeline.to(this.rotation,{y:-3.15,duration:.05,ease:'linear'})
         timeline.to(this.position,{z:-.8,duration:.8,ease:'linear'})
         timeline.to(this.position,{y:0,duration:.3,ease:'linear'})
+        timeline.to(this.position,{x:1.3,duration:0,ease:'linear'})
+        timeline.to(this.rotation,{y:0,duration:0,ease:'linear'})
     }
 }

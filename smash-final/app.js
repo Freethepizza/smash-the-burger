@@ -8,7 +8,7 @@ import { Muppie } from "./components/muppie.js";
 import { Skater } from "./components/skater.js";
 import { Chef } from "./components/chef.js";
 import { Game } from "./game.js";
-import { helperStart, helperEnd, helperSmash, helperLeft, helperRight, helperBurger,helperRapper,helperMuppie,helperGamer, boxBurger,boxRapper,boxMuppie,boxGamer,boxRight,boxLeft,boxSmash } from "./hitboxes.js";
+import { helperStart, helperEnd, helperSmash, helperLeft, helperRight, helperBurger,helperRapper,helperMuppie,helperGamer,helperSkater,boxBurger,boxRapper,boxMuppie,boxGamer,boxSkater,boxRight,boxLeft,boxSmash } from "./hitboxes.js";
 //Scene
 const scene = new THREE.Scene();
 
@@ -79,6 +79,7 @@ const tick = function() {
     boxRapper.setFromObject(rapper);
     boxMuppie.setFromObject(muppie);
     boxGamer.setFromObject(gamer);
+    boxSkater.setFromObject(skater);
 
     if(boxBurger.intersectsBox(boxRight)){
         burger.isActive = true;
@@ -99,6 +100,11 @@ const tick = function() {
         gamer.isActive = true;
     }else if(boxGamer.intersectsBox(boxLeft)){
         gamer.isActive = false
+    }
+    if(boxSkater.intersectsBox(boxRight)){
+        skater.isActive = true;
+    }else if(boxGamer.intersectsBox(boxLeft)){
+        skater.isActive = false
     }
 }
 
@@ -141,6 +147,16 @@ document.body.addEventListener('click', ()=>{
         game.lifes -=1;
     }else if(gamer.isActive === false){
         console.log('gamer not active')
+    }
+
+    if(skater.isActive && boxSkater.intersectsBox(boxSmash)){
+        console.log('skater hit!!!');
+        game.score+=400;
+    }else if(gamer.isActive && !boxSkater.intersectsBox(boxSmash)){
+        console.log('skater no hit!!!')
+        game.lifes -=1;
+    }else if(skater.isActive === false){
+        console.log('skater not active')
     }
 })
 

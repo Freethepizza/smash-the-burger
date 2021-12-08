@@ -8,6 +8,7 @@ export class Kitchen extends THREE.Group{
         this.modelUrl = "./models/kitchen.glb";
         this.manager = manager;
         this.onCreate();
+        
     }
     onCreate(){
         new GLTFLoader(this.manager).load(
@@ -16,6 +17,7 @@ export class Kitchen extends THREE.Group{
                 this.updateTransform();
                 this.add(gltf.scene);
             });
+            
     }
     updateTransform(){
         this.name = "kitchen";
