@@ -1,6 +1,6 @@
 import * as THREE from "./dependencies/three.module.js";
 import {OrbitControls} from "./dependencies/OrbitControls.js";
-import { Kitchen } from "./components/kitchen.js";
+import { Kitchen,mixer } from "./components/kitchen.js";
 import { Burger } from "./components/burger.js";
 import { Rapper } from "./components/rapper.js";
 import { Gamer } from "./components/gamer.js";
@@ -11,7 +11,6 @@ import { Game } from "./game.js";
 import { helperStart, helperEnd, helperSmash, helperLeft, helperRight, helperBurger,helperRapper,helperMuppie,helperGamer,helperSkater,boxBurger,boxRapper,boxMuppie,boxGamer,boxSkater,boxRight,boxLeft,boxSmash } from "./hitboxes.js";
 //Scene
 const scene = new THREE.Scene();
-
 //Load Manager
 const manager = new THREE.LoadingManager();
 manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
@@ -19,7 +18,7 @@ manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 };
 manager.onLoad = function ( ) {
 	console.log( 'Loading complete!');
-    scene.add(kitchen,burger,rapper,gamer,muppie,skater,chef,helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie,helperSkater);
+    scene.add(burger,rapper,gamer,muppie,skater,helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie,helperSkater);
     game.level1()
 };
 manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
@@ -30,7 +29,7 @@ manager.onError = function ( url ) {
 	console.log( 'There was an error loading ' + url );
 };
 
-const kitchen = new Kitchen(manager);
+const kitchen = new Kitchen(manager,scene);
 const burger = new Burger(manager);
 const rapper = new Rapper(manager);
 const gamer = new Gamer(manager);
@@ -38,7 +37,6 @@ const muppie = new Muppie(manager);
 const skater = new Skater(manager);
 const chef = new Chef(manager);
 const game = new Game(burger,rapper,gamer,muppie,skater);
-
 
 //Ambient Light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -66,6 +64,7 @@ var delta = 0;
 
 //OrbitControls
 var controls = new OrbitControls( camera, renderer.domElement );
+let previousTime = 0;
 
 //Updater
 const tick = function() {
@@ -80,6 +79,16 @@ const tick = function() {
     boxMuppie.setFromObject(muppie);
     boxGamer.setFromObject(gamer);
     boxSkater.setFromObject(skater);
+
+    const elapsedTime = clock.getElapsedTime();
+    const deltaTime = elapsedTime - previousTime;
+    previousTime = elapsedTime;
+
+    if(mixer!==null){
+        mixer.update(delta)
+    }
+
+    console.log(mixer)
 
     if(boxBurger.intersectsBox(boxRight)){
         burger.isActive = true;
@@ -109,6 +118,7 @@ const tick = function() {
 }
 
 document.querySelector('.smash').addEventListener('click', ()=>{
+    kitchen.play()
     if(burger.isActive && boxBurger.intersectsBox(boxSmash)){
         console.log('burger hit!!!');
         game.score+=50;
