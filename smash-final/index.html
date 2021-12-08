@@ -9,12 +9,51 @@
     <style>
         *{
             margin:0;padding: 0;
-            background-color: skyblue;
+        }
+        #ui{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #ui > *{
+            position: absolute;
+        }
+        .lifes{
+            right:15px;
+            top:15px;
+        }
+        .score{
+            left: 15px;
+            top:15px;
+        }
+        .smash{
+            width: 100px;
+            height: 100px;
+            bottom:50px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .gameover{
+            display: none;
+            background-color: rgba(0,0,0,0.6);
+            left: 50%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            width: 300px;
+            height: 100px;
         }
     </style>
 </head>
 <body>
-    <h1>Score: <span id="score"></span></h1>
-    <h1>Lifes <span id="lifes"></span></h1>
+    <div id="ui">
+        <h1 class="score">Score: <span id="score"></span></h1>
+        <h1 class="lifes">Lifes <span id="lifes"></span></h1>
+        <div class="gameover">
+            <h1 style="color:white">Game Over</h1>
+        </div>
+        <button class="smash">SMASH</button>
+    </div>
+    <div id="game"></div>
 </body>
 </html>

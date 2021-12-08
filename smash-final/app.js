@@ -108,7 +108,7 @@ const tick = function() {
     }
 }
 
-document.body.addEventListener('click', ()=>{
+document.querySelector('.smash').addEventListener('click', ()=>{
     if(burger.isActive && boxBurger.intersectsBox(boxSmash)){
         console.log('burger hit!!!');
         game.score+=50;
@@ -116,6 +116,7 @@ document.body.addEventListener('click', ()=>{
     }else if(burger.isActive && !boxBurger.intersectsBox(boxSmash)){
         console.log('burger no hit!!!');
         game.lifes -=1;
+        game.checkLifes();
     }else if(burger.isActive === false){
         console.log('burger not active')
     }
@@ -127,6 +128,7 @@ document.body.addEventListener('click', ()=>{
     }else if(rapper.isActive && !boxRapper.intersectsBox(boxSmash)){
         console.log('rapper no hit!!!')
         game.lifes -=1;
+        game.checkLifes();
     }else if(rapper.isActive === false){
         console.log('rapper not active')
     }
@@ -138,6 +140,7 @@ document.body.addEventListener('click', ()=>{
     }else if(muppie.isActive && !boxMuppie.intersectsBox(boxSmash)){
         console.log('muppie no hit!!!')
         game.lifes -=1;
+        game.checkLifes();
     }else if(muppie.isActive === false){
         console.log('muppie not active')
     }
@@ -149,6 +152,7 @@ document.body.addEventListener('click', ()=>{
     }else if(gamer.isActive && !boxGamer.intersectsBox(boxSmash)){
         console.log('gamer no hit!!!')
         game.lifes -=1;
+        game.checkLifes();
     }else if(gamer.isActive === false){
         console.log('gamer not active')
     }
@@ -160,11 +164,17 @@ document.body.addEventListener('click', ()=>{
     }else if(skater.isActive && !boxSkater.intersectsBox(boxSmash)){
         console.log('skater no hit!!!')
         game.lifes -=1;
+        game.checkLifes();
     }else if(skater.isActive === false){
         console.log('skater not active')
+    }
+
+    if(game.over){
+        document.querySelector(".gameover").style = 'display:block';
+        document.querySelector(".smash").style = 'display:none';
     }
 })
 
 const render = () => {renderer.render(scene,camera)}
 tick();
-document.body.appendChild(renderer.domElement)
+document.getElementById('game').appendChild(renderer.domElement)
