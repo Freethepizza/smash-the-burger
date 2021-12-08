@@ -83,7 +83,6 @@ import {mesh,mesh2,mesh3} from "./hitboxes.js";
 
     renderer.domElement.addEventListener("click", () =>{
         if(kitchenHitbox.intersectsBox(burgerHitbox)){
-            
             score+=1;
             animate.setSmash();
         }else{
