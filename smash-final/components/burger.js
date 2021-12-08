@@ -6,7 +6,7 @@ import { boxBurger } from "../hitboxes.js";
 export class Burger extends THREE.Group{
     constructor(manager){
         super();
-        this.modelUrl = "../models/burger.glb";
+        this.modelUrl = "./models/burger.glb";
         this.manager = manager;
         this.onCreate();
         this.isActive = false;

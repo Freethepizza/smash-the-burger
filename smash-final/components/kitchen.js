@@ -5,7 +5,7 @@ import gsap from "../dependencies/gsap/index.js";
 export class Kitchen extends THREE.Group{
     constructor(manager){
         super();
-        this.modelUrl = "../models/kitchen.glb";
+        this.modelUrl = "./models/kitchen.glb";
         this.manager = manager;
         this.onCreate();
     }

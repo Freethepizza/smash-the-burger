@@ -5,7 +5,7 @@ import gsap from "../dependencies/gsap/index.js";
 export class Muppie extends THREE.Group{
     constructor(manager){
         super();
-        this.modelUrl = "../models/muppie.glb";
+        this.modelUrl = "./models/muppie.glb";
         this.manager = manager;
         this.onCreate();
         this.isActive = false;

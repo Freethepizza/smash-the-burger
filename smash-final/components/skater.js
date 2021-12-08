@@ -5,7 +5,7 @@ import gsap from "../dependencies/gsap/index.js";
 export class Skater extends THREE.Group{
     constructor(manager){
         super();
-        this.modelUrl = "../models/skater.glb";
+        this.modelUrl = "./models/skater.glb";
         this.manager = manager;
         this.onCreate();
     }
