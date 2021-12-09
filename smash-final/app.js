@@ -29,14 +29,7 @@ manager.onError = function ( url ) {
 	console.log( 'There was an error loading ' + url );
 };
 
-const kitchen = new Kitchen(manager,scene);
-const burger = new Burger(manager);
-const rapper = new Rapper(manager);
-const gamer = new Gamer(manager);
-const muppie = new Muppie(manager);
-const skater = new Skater(manager);
-const chef = new Chef(manager);
-const game = new Game(burger,rapper,gamer,muppie,skater);
+
 
 //Ambient Light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -66,6 +59,20 @@ var delta = 0;
 var controls = new OrbitControls( camera, renderer.domElement );
 let previousTime = 0;
 
+//Instances
+const kitchen = new Kitchen(manager,scene);
+const burger = new Burger(manager);
+const rapper = new Rapper(manager);
+const gamer = new Gamer(manager);
+const muppie = new Muppie(manager);
+const skater = new Skater(manager);
+const chef = new Chef(manager);
+const game = new Game(burger,rapper,gamer,muppie,skater);
+//Instances
+
+const box = new THREE.Box3();
+const helper = new THREE.Box3Helper( box, 0xffff00 );
+scene.add(helper)
 //Updater
 const tick = function() {
     controls.update()
@@ -88,8 +95,13 @@ const tick = function() {
         mixer.update(delta)
     }
 
-    console.log(mixer)
-
+    //children[0].children[0].children[2].children[2].children[0].children[0].children[2]
+    
+    if(scene.getObjectByName('kitchen')){
+        box.setFromObject(scene.getObjectByName('kitchen').children[0].children[0].children[2].children[2].children[0].children[0])
+        
+    }
+    
     if(boxBurger.intersectsBox(boxRight)){
         burger.isActive = true;
     }else if(boxBurger.intersectsBox(boxLeft)){

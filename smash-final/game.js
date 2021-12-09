@@ -1,20 +1,22 @@
 import gsap from "./dependencies/gsap/index.js"
 import { Burger } from "./components/burger.js";
 
+
+
 export class Game{
-    constructor(burger,rapper,gamer,muppie,skater){
+    constructor(burger,rapper,gamer,muppie,skater,manager){
         this.burger = burger;
         this.rapper = rapper;
         this.gamer = gamer;
         this.muppie = muppie;
         this.skater = skater;
+        this.manager = manager;
         //this.onCreate();
         this.lifes = 3; 
         this.score = 0;
         this.over = false;
     }
     onCreate(){
-        
     }
     checkLifes(){
         this.lifes === 0 ? this.over = true : this.over = false;
