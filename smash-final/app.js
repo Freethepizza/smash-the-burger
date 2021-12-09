@@ -18,7 +18,7 @@ manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 };
 manager.onLoad = function ( ) {
 	console.log( 'Loading complete!');
-    scene.add(burger,rapper,gamer,muppie,skater,helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie,helperSkater);
+    scene.add(burger,rapper,gamer,muppie,skater,/*helperStart,helperEnd,helperSmash,helperLeft,helperRight,helperBurger,helperRapper,helperMuppie,helperSkater*/);
     game.level1()
 };
 manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
@@ -29,8 +29,11 @@ manager.onError = function ( url ) {
 	console.log( 'There was an error loading ' + url );
 };
 
+const raycaster = new THREE.Raycaster();
+raycaster.set(new THREE.Vector3(0, 1.5, 2.8),new THREE.Vector3(0,1,1));
 
-
+const arrow = new THREE.ArrowHelper( new THREE.Vector3(0, 1.5, 2.8),new THREE.Vector3(0, 1.5, 2.8), 100, Math.random() * 0xffffff );
+scene.add( arrow );
 //Ambient Light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
@@ -70,11 +73,19 @@ const chef = new Chef(manager);
 const game = new Game(burger,rapper,gamer,muppie,skater);
 //Instances
 
-const box = new THREE.Box3();
-const helper = new THREE.Box3Helper( box, 0xffff00 );
-scene.add(helper)
+
+const intersects = raycaster.intersectObjects(scene.children);
 //Updater
 const tick = function() {
+
+    
+
+	for ( let i = 0; i < intersects.length; i ++ ) {
+
+		console.log(intersects);
+
+	}
+
     controls.update()
     delta = clock.getDelta();
     requestAnimationFrame(tick);
@@ -93,13 +104,6 @@ const tick = function() {
 
     if(mixer!==null){
         mixer.update(delta)
-    }
-
-    //children[0].children[0].children[2].children[2].children[0].children[0].children[2]
-    
-    if(scene.getObjectByName('kitchen')){
-        box.setFromObject(scene.getObjectByName('kitchen').children[0].children[0].children[2].children[2].children[0].children[0])
-        
     }
     
     if(boxBurger.intersectsBox(boxRight)){
@@ -192,6 +196,7 @@ document.querySelector('.smash').addEventListener('click', ()=>{
     }
 
     if(game.over){
+        game.gameOverSfx();
         document.querySelector(".gameover").style = 'display:block';
         document.querySelector(".smash").style = 'display:none';
     }
